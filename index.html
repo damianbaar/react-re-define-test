@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>React demo</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //Temporary hack, need to add global detection in re-define
+      var process = { env: {}}
+    </script>
+
+    <script src="/bundle.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      var react = require('react')
+        , hello = require('components').hello
+
+      function createOrUpdate(msg, id) {
+        var component = react.createFactory(hello)({ name: msg })
+          , target = document.getElementById(id)
+
+        react.render(component, target)
+      }
+    </script>
+
+    <div id="server">
+      {{{dom}}}
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+      //Refresh component from server
+      createOrUpdate('server updated by client', 'server')
+    </script>
+
+    <div id="client"></div>
+
+    <script type="text/javascript" charset="utf-8">
+      //New instance of component
+      createOrUpdate('created in runtime', 'client')
+    </script>
+  </body>
+</html>
