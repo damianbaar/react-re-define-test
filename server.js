@@ -7,6 +7,7 @@ var React = require('react')
   , handlebars = require('handlebars')
   , redefine = require('re-define')
   , includeExternal = require('re-define-include-external')
+  , reactify = require('re-define-react')
 
 require('node-jsx').install()
 
@@ -28,7 +29,8 @@ app.get('/bundle.js', function(req, res){
     .fromFile( './components.js'
              , { 'project-name': 'components'
                , wrapper: 'browserify' }
-             , [ includeExternal({}) ]
+             , [ includeExternal({})
+               , reactify({}) ]
              )
     .pipe(res)
 })

@@ -1,0 +1,12 @@
+node_modules/
+bower_components/
+.rebooted
+tags
+*.out
+.idea
+bbamd.iml
+npm-debug.log
+*.sublime-*
+*.tern-project
+temp
+.tmp
