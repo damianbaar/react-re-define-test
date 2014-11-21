@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "express": "^3.18.3",
     "handlebars": "^2.0.0",
     "node-jsx": "^0.12.0",
-    "re-define": "^1.10.18-react-2",
+    "re-define": "^1.11.0",
     "re-define-include-external": "^0.2.9",
+    "re-define-react": "0.0.1",
     "react": "^0.12.0",
     "through2": "^0.6.3"
   }
