@@ -28,7 +28,10 @@ app.get('/bundle.js', function(req, res){
   redefine
     .fromFile( './components.js'
              , { 'project-name': 'components'
-               , wrapper: 'browserify' }
+               , autoClean: false
+               , wrapper: 'browserify' 
+               , autoInsertFolder: false
+               }
              , [ includeExternal({})
                , reactify({}) ]
              )
