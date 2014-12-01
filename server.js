@@ -8,6 +8,8 @@ var React = require('react')
   , redefine = require('re-define')
   , includeExternal = require('re-define-include-external')
   , reactify = require('re-define-react')
+  , adapter = require('browserify-transform-adapter')
+  , envify = require('envify')
 
 require('node-jsx').install()
 
@@ -28,12 +30,15 @@ app.get('/bundle.js', function(req, res){
   redefine
     .fromFile( './components.js'
              , { 'project-name': 'components'
-               , autoClean: false
+               // , autoClean: false
                , wrapper: 'browserify' 
                , autoInsertFolder: false
+               , development: true
                }
              , [ includeExternal({})
-               , reactify({}) ]
+               , reactify({}) 
+               , adapter(envify)
+               ]
              )
     .pipe(res)
 })
